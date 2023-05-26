@@ -56,7 +56,8 @@ $listaProdutos = $produto->Listar();
                     <h4 class="card-title"><?php echo $prod['nome']; ?></h4>
                     <p class="card-text"><?php echo $prod['descricao']; ?></p>
                     <div class="d-grid gap-2">
-                        <a href="produto.php?<?php echo $prod['id']; ?>" class="btn btn-primary">Mais detalhes...</a>
+                    <a href="produto.php?id=<?php echo $prod['id']; ?>" class="btn btn-primary">Mais detalhes...</a>
+
                     </div>
                 </div>
             </div>

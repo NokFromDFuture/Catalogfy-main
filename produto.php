@@ -1,22 +1,19 @@
 <?php
-// Página com detalhes do produtos selecionado.
-// ex: produto.php?id=25
+
+
 require_once('admin/classes/Produto.class.php');
 require_once('admin/classes/Banco.class.php');
 
 $produto = new Produto();
-$listaProdutos = $produto->Listar();
+$produto->id=$_GET['id'];
+$prod = $produto->BuscarPorID()[0]; 
 
-// Percorrer a lista de produtos e exibi-los no card
-    foreach ($listaProdutos as $prod) 
-
-    
 ?>
 
 
 
 <!doctype html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
   <title>Detalhes do Produto</title>
@@ -27,50 +24,48 @@ $listaProdutos = $produto->Listar();
   <!-- Bootstrap CSS v5.2.1 -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-
+    
 </head>
 
 <body>
-<nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #00a;">
+  <nav class="navbar navbar-expand-sm navbar-dark" style="background-color: #00a;">
     <a class="navbar-brand" href="#">Detalhes do Produto</a>
-    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-        aria-expanded="false" aria-label="Toggle navigation"></button>
+    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId"
+      aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation"></button>
     <div class="collapse navbar-collapse" id="collapsibleNavId">
-        <ul class="navbar-nav me-auto mt-2 mt-lg-0">
-            <li class="nav-item">
-                <a class="nav-link active" href="#" aria-current="page">Início <span class="visually-hidden">(current)</span></a>
-            </li>
-        </ul>
+      <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" href="#" aria-current="page">Início <span class="visually-hidden">(current)</span></a>
+        </li>
+      </ul>
     </div>
-</nav> 
+  </nav>
 
-<div class="container">
+  <div class="container">
     <div class="row mt-3">
-        <div class="col">
-            <h1 class="display-5">Detalhes do Produto</h1>
-        </div>
+      <div class="col">
+        <h1 class="display-5">Detalhes do Produto</h1>
+      </div>
     </div>
-    <!-- Detalhes do Produto selecionado: -->
     <div class="row mt-5">
-        <div class="col-7">
-            <img class="rounded mx-auto d-block" src="https://i.imgur.com/cnC3irP.jpg"/>
-        </div>
-        <div class="col-5">         
-            <h2 <?php echo $prod['nome']; ?> >Titulo do Produto</h2>
-            <p <?php echo $prod['descricao']; ?> >Descrição do produto</p>
-            <h1 <?php echo $prod['preco']; ?> class="display-6">$9,99</h1>
-            <a href="index.php"><small class="text-muted">Voltar</small></a>
-        </div>
+      <div class="col-7">
+        <img class="rounded mx-auto d-block" src="img/<?php echo $prod['foto']; ?>" alt="Imagem" height="300px" width="45%">
+      </div>
+      <div class="col-5">
+        <h2><?php echo $prod['nome']; ?></h2>
+        <p><?php echo $prod['descricao']; ?></p>
+        <h1 class="display-6">$<?php echo $prod['preco']; ?></h1>
+        <a href="index.php"><small class="text-muted">Voltar</small></a>
+      </div>
     </div>
-   
-</div>
+  </div>
 
-<div class="container">
-  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-    <div class="col-md-4 d-flex align-items-center">
-      <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-        <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
-      </a>
+  <div class="container">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+      <div class="col-md-4 d-flex align-items-center">
+        <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+          <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+        </a>
       <span class="text-muted">&copy; 2029 Senacão Show</span>
     </div>
 
